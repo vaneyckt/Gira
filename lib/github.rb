@@ -6,12 +6,12 @@ module Github
     events = get_repository_events_after(timestamp)
     pull_request_events = events.select { |event| event.type == 'PullRequestEvent' }
 
-    result = {}
-    result[:last_event_timestamp] = events.last.created_at
-    result[:opened_pull_request_events] = pull_request_events.select { |event| event.payload.action == 'opened' || event.payload.action == 'reopened'}
-    result[:merged_pull_request_events] = pull_request_events.select { |event| event.payload.action == 'closed' && event.payload.pull_request.merged == true }
-    result[:closed_pull_request_events] = pull_request_events.select { |event| event.payload.action == 'closed' && event.payload.pull_request.merged == false }
-    result
+    info = {}
+    info[:last_event_timestamp] = events.last.created_at
+    info[:opened_pull_request_events] = pull_request_events.select { |event| event.payload.action == 'opened' || event.payload.action == 'reopened'}
+    info[:merged_pull_request_events] = pull_request_events.select { |event| event.payload.action == 'closed' && event.payload.pull_request.merged == true }
+    info[:closed_pull_request_events] = pull_request_events.select { |event| event.payload.action == 'closed' && event.payload.pull_request.merged == false }
+    info
   end
 
   def Github.get_repository_events_after(timestamp)
