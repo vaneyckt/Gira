@@ -1,0 +1,13 @@
+---
+# The account that Gira will use for communicating with GitHub.
+:github_login: github_login
+:github_password: github_password
+
+# The repository that contains the pull requests you want to run tests on.
+# For example, if you wanted to test the pull requests of the Gira repository,
+# you would put git@github.com:vaneyckt/Gira.git here.
+:github_ssh_repository: git@github.com:vaneyckt/Gira.git
+
+# The interval between successive communications with GitHub.
+# This makes sure we don't end up spamming GitHub's servers.
+:github_polling_interval_seconds: 300
