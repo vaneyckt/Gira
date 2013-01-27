@@ -1,0 +1,19 @@
+== Introduction
+
+Gira is a Ruby app that makes it possible to trigger actions whenever a pull request is opened, merged, or closed. GitHub does already provide repo hooks for such a callback mechanism, but their approach requires you to setup web service urls. This can be a bit overkill sometimes.
+
+Gira takes a more simple approach. It runs as a background daemon process and simply queries GitHub for pull request information at regular intervals. The downside of this approach is that you may have to wait several minutes before Gira learns of a pull request event having happened. The upside however is that trigger actions can be directly specified in the gira.rb file, hence avoiding the need for web service urls.
+
+== Getting Started
+
+Install the gem at the command prompt:
+
+    gem install gira
+
+Clone the Gira repository to your hard drive:
+
+    git clone git@github.com:vaneyckt/Gira.git
+
+A configuration file can be found in the /config directory. There are a few configuration details that you will need to specify before running Gira. The comments in the file should hopefully make it easy to get everything set up right. Once this is done, you can modify the gira.rb file to add custom actions for pull request events. Save your changes and run the following command to start Gira:
+
+    ruby gira_control.rb start
